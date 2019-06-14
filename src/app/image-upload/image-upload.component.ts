@@ -13,6 +13,7 @@ export class ImageUploadComponent implements OnInit {
   loaded = false;
   @Input() selectedFile: ImageSnippet;
   type = '';
+  private regex1: RegExp;
   constructor(private imageService: ImageService) { }
 
   ngOnInit() {
@@ -20,7 +21,6 @@ export class ImageUploadComponent implements OnInit {
   processFile(imageInput: any) {
     const file: File = imageInput.files[0];
     const reader = new FileReader();
-   // const width = 300;
     const img = new Image();
 
     reader.addEventListener('load', (event: any) => {
@@ -46,6 +46,9 @@ export class ImageUploadComponent implements OnInit {
       );
       this.selectedFile.src = canvas.toDataURL('img/jpeg');
       this.loaded = true;
+      this.regex1 = new RegExp('\[^.\\\\\\/:*?"<>|\\r\\n]+$');
+      this.type = this.selectedFile.file.name.match(this.regex1)[0];
+      console.log(this.type);
     });
   }
   onUpload() {
@@ -57,7 +60,6 @@ export class ImageUploadComponent implements OnInit {
         (err) => {
 
         });
-      // console.log(this.selectedFile);
     } catch (e) {
       console.log('Не выбран файл!');
     }
