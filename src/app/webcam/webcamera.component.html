@@ -1,0 +1,17 @@
+<div id="web">
+  <div>
+    <video #video id="video" width="640" height="480" autoplay></video>
+  </div>
+  <div>
+    <button class="mat-raised-button" id="snap" (click)="capture()" style="margin-top: 2em;">Take a Photo</button>
+  </div>
+  <canvas #canvas id="canvas" width="640" height="480"></canvas>
+  <ul>
+    <li *ngFor="let c of captures" (click)="onSelect(c)">
+      <img src="{{ c }}" height="50" />
+    </li>
+  </ul>
+  <div>
+    <button class="mat-raised-button" id="chooseFromWeb" (click)="chooseWeb()" style="margin-bottom: 2em;">Choose photo</button>
+  </div>
+</div>

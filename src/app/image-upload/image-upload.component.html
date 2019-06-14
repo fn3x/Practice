@@ -1,0 +1,10 @@
+<button mat-raised-button (click)="imageInput.click()">
+  <span>Select File</span>
+</button>
+
+<!-- Hidden input -->
+<input #imageInput type="file" (change)="processFile(imageInput)" accept="image/*" hidden>
+<button mat-raised-button (click)="onUpload()">Send photo</button>
+<div *ngIf="loaded">
+  <img [src]="selectedFile.src">
+</div>
