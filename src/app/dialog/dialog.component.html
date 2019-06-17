@@ -1,9 +1,21 @@
 <div class="dialog">
-<h2 mat-dialog-title>{{description}}</h2>
   <mat-dialog-content>
-    <app-webcamera [selectedFile]=""></app-webcamera>
-    <mat-dialog-actions>
-      <button class="mat-raised-button" (click)="close()">Close</button>
-    </mat-dialog-actions>
+    <div id="web">
+      <div>
+        <video #video id="video" width="640" height="480" autoplay></video>
+      </div>
+      <div>
+        <button class="mat-raised-button" (click)="close()">Close</button>
+      </div>
+      <div>
+        <button class="mat-raised-button" id="snap" (click)="capture()" style="margin-top: 2em;">Take a Photo</button>
+      </div>
+      <canvas #canvas id="canvas" width="640" height="480"></canvas>
+      <ul>
+        <li *ngFor="let c of captures" (click)="onSelect(c)">
+          <img src="{{ c }}" height="50" />
+        </li>
+      </ul>
+    </div>
   </mat-dialog-content>
 </div>

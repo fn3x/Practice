@@ -7,18 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {DialogComponent} from './dialog/dialog.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
-import { WebcameraComponent } from './webcam/webcamera.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ImageUploadComponent } from './image-upload/image-upload.component';
 import { ImageService} from './Image.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     DialogComponent,
-    FormComponent,
-    WebcameraComponent,
-    ImageUploadComponent
+    FormComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,16 @@
 <div class="mat-form-field">
-  <app-image-upload [selectedFile]="selectedFile"></app-image-upload>
+  <button mat-raised-button (click)="imageInput.click()">
+    <span>Select File</span>
+  </button>
+  <button mat-raised-button (click)="onUpload()">Send photo</button>
+  <div *ngIf="loaded">
+    <img [src]="selectedFile.src">
+  </div>
   <button mat-button (click)="openDialog()">Take a photo</button>
   <br>
   <canvas id="canvas" width="200" height="200"></canvas>
 
+  <!-- Hidden input -->
+  <input #imageInput type="file" (change)="processFile(imageInput)" accept="image/*" hidden>
+  <!/-- Hidden Input -->
 </div>
